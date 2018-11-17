@@ -1,10 +1,12 @@
 import tkinter as tk
 import arithmetic as art # import new class everytime you created a new file you want to use
 from graphics import *
+import random
 
 root = tk.Tk()
-canvas = tk.Canvas(root, width=200, height=500)
+canvas = tk.Canvas(root, width=600, height=500)
 blackLine = canvas.create_line(10, 10, 50, 200)
+moveX = 240
 
 
 class Application(tk.Frame):
@@ -28,6 +30,7 @@ class Application(tk.Frame):
     #     win = GraphWin("graphics window", 500, 300)
 
 
+
     def draw_black_line():
         # blackLine = canvas.create_line(10, 10, 50, 200)
         canvas.delete(blackline)
@@ -37,18 +40,42 @@ class Application(tk.Frame):
         result = art.Arithmetic.addition(43, 10)
         #draw_black_line()
         canvas.delete(blackLine)
+
         print (str(result) + " left key pressed")
 
     @staticmethod
     def right_key(event):
         result = art.Arithmetic.division(43, 10)
-        redLine = canvas.create_line(50, 50, 240, 270, fill='red')
+        i = 240
+        randNumb = random.randint(0, 5)
+        if(randNumb == 3):
+            while i < 250:
+                redLine = canvas.create_line(50, 50, i, 270, fill='red')
+                i += 1
+        if(randNumb == 5):
+            while i < 250:
+                redLine = canvas.create_line(50, 50, i, 270, fill='blue')
+                i += 1
+        if(randNumb == 2):
+            while i < 250:
+                redLine = canvas.create_line(50, 50, i, 270, fill='black')
+                i += 1
+        if(randNumb == 0):
+            while i < 250:
+                redLine = canvas.create_line(50, 50, i, 270, fill='yellow')
+                i += 1
+        if(randNumb == 1):
+            while i < 250:
+                redLine = canvas.create_line(50, 50, i, 270, fill='green')
+                i += 1
+        #moveX = moveX + 1
+        print(random.randint(0, 5))
         print (str(result) + " key pressed")
 
 
 
 
-
+xUnit = 200
 app = Application(root)
 
 app.mainloop()
