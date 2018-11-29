@@ -32,17 +32,16 @@ class Application(tk.Frame):
 
     def draw_black_line():
         # blackLine = canvas.create_line(10, 10, 50, 200)
-        canvas.delete(blackline)
+        canvas.delete(ALL)
 
     @staticmethod
     def left_key(event):
         result = art.Arithmetic.addition(43, 10)
         #draw_black_line()
-        #canvas.delete(blackLine)
         global moveX
         i = 240
         randNumb = random.randint(0, 5)
-        global moveX
+        global blackLine
         if (randNumb == 3):
             while i > 230:
                 redLine = canvas.create_line(50, 50, moveX, 270, fill='red')
@@ -73,7 +72,8 @@ class Application(tk.Frame):
                 purpleLine = canvas.create_line(50, 50, moveX, 270, fill='purple')
                 moveX -= 1
                 i -= 1
-
+        #canvas.delete(blackLine)
+        canvas.after(1000, canvas.delete, blackLine)
         print (str(result) + " left key pressed")
 
     @staticmethod
@@ -112,7 +112,7 @@ class Application(tk.Frame):
                 purpleLine = canvas.create_line(50, 50, moveX, 270, fill='purple')
                 moveX += 1
                 i += 1
-
+        #canvas.delete("all")
         moveX += 1
         print(random.randint(0, 5))
         print (str(result) + " key pressed")
